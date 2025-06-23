@@ -15,7 +15,7 @@ module.exports = async (client, interaction) => {
                 interaction.reply({
                     content: "! This command can only be used by the developer, for safety reasons",
                     ephemeral: true,
-                })
+                });
                 return;
             }
         } 
@@ -25,7 +25,7 @@ module.exports = async (client, interaction) => {
                 interaction.reply({
                     content: "! This command can only be used in a test server, for safety reasons",
                     ephemeral: true,
-                })
+                });
                 return;
             }
         }
@@ -35,7 +35,7 @@ module.exports = async (client, interaction) => {
                 interaction.reply({
                     content: "! This command can only be used in BARC, for safety reasons",
                     ephemeral: true,
-                })
+                });
                 return;
             }
         }
@@ -45,7 +45,7 @@ module.exports = async (client, interaction) => {
                 interaction.reply({
                     content: "! This command can only be used by company leaderships (CS+), for safety reasons",
                     ephemeral: true,
-                })
+                });
                 return;
             }
         }
@@ -56,7 +56,7 @@ module.exports = async (client, interaction) => {
                     interaction.reply({
                         content: "! You're lacking permissions",
                         ephemeral: true,
-                    })
+                    });
                     break;
                 }
             }
