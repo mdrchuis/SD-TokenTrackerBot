@@ -1,5 +1,15 @@
-const { devs, testServer, barcServer, leadership } = require('../../../config.json');
+const { devs, testServer, barcServer, leadership, spreatsheetId, spreadsheetRanges } = require('../../../config.json');
 const getAllCommands = require('../../utils/getAllCommands');
+
+const { google } = require("googleapis");
+const sheets = google.sheets('v4');
+const auth = new google.auth.GoogleAuth({
+    keyFile: "../../../db-credentials.json",
+    scopes: "https://www.googleapis.com/auth/spreadsheets",
+});
+
+const sheetsClient = await auth.getClient();
+const googleSheets = google.sheets({version: "v4", auth: sheetsClient});
 
 module.exports = async (client, interaction) => {
     if (!interaction.isChatInputCommand()) return;
@@ -62,7 +72,11 @@ module.exports = async (client, interaction) => {
             }
         }
 
-        await commandObject.callback(client, interaction)
+        if (commandObject.sheets) {
+            await commandObject.callback(client, googleSheets, interaction)
+        } else {
+            await commandObject.callback(client, interaction)
+        }
     } catch (error) {
         console.error(`! Catched error "${error}"`)
     }

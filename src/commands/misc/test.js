@@ -5,6 +5,7 @@ module.exports = {
     description: 'Pong!!!',
     devOnly: true,
     testOnly: true,
+    //sheets: true,
     // barcOnly: true,
     // leadershipOnly: true,
     // options: Object[],
