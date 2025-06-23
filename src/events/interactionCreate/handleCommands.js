@@ -1,17 +1,8 @@
-const { devs, testServer, barcServer, leadership, spreatsheetId, spreadsheetRanges } = require('../../../config.json');
+const { MessageFlags } = require('discord.js');
+const { devs, testServer, barcServer, leadership } = require('../../../config.json');
 const getAllCommands = require('../../utils/getAllCommands');
 
-const { google } = require("googleapis");
-const sheets = google.sheets('v4');
-const auth = new google.auth.GoogleAuth({
-    keyFile: "../../../db-credentials.json",
-    scopes: "https://www.googleapis.com/auth/spreadsheets",
-});
-
-const sheetsClient = await auth.getClient();
-const googleSheets = google.sheets({version: "v4", auth: sheetsClient});
-
-module.exports = async (client, interaction) => {
+module.exports = async (client, googleSheets, interaction) => {
     if (!interaction.isChatInputCommand()) return;
 
     const commands = getAllCommands();
@@ -24,7 +15,7 @@ module.exports = async (client, interaction) => {
             if (!devs.includes(interaction.member.user.id)) {
                 interaction.reply({
                     content: "! This command can only be used by the developer, for safety reasons",
-                    ephemeral: true,
+                    flags: MessageFlags.Ephemeral,
                 });
                 return;
             }
@@ -34,7 +25,7 @@ module.exports = async (client, interaction) => {
             if (!(interaction.guildId === testServer)) {
                 interaction.reply({
                     content: "! This command can only be used in a test server, for safety reasons",
-                    ephemeral: true,
+                    flags: MessageFlags.Ephemeral,
                 });
                 return;
             }
@@ -44,7 +35,7 @@ module.exports = async (client, interaction) => {
             if (!(interaction.guildId === barcServer)) {
                 interaction.reply({
                     content: "! This command can only be used in BARC, for safety reasons",
-                    ephemeral: true,
+                    flags: MessageFlags.Ephemeral,
                 });
                 return;
             }
@@ -54,7 +45,7 @@ module.exports = async (client, interaction) => {
             if (!leadership.includes(interaction.member.user.id)) {
                 interaction.reply({
                     content: "! This command can only be used by company leaderships (CS+), for safety reasons",
-                    ephemeral: true,
+                    flags: MessageFlags.Ephemeral,
                 });
                 return;
             }
@@ -65,7 +56,7 @@ module.exports = async (client, interaction) => {
                 if (!interaction.member.permissions.has(permission)) {
                     interaction.reply({
                         content: "! You're lacking permissions",
-                        ephemeral: true,
+                        flags: MessageFlags.Ephemeral,
                     });
                     break;
                 }
@@ -78,6 +69,6 @@ module.exports = async (client, interaction) => {
             await commandObject.callback(client, interaction)
         }
     } catch (error) {
-        console.error(`! Catched error "${error}"`)
+        console.error(`handleCommands ! Catched error "${error}"`)
     }
 };

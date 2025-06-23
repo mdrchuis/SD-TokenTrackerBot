@@ -1,4 +1,4 @@
-const { ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandOptionType, MessageFlags } = require('discord.js');
 
 module.exports = {
     name: 'test',
@@ -11,6 +11,6 @@ module.exports = {
     // options: Object[],
 
     callback: (client, interaction) => {
-        interaction.reply({content: `Pong! ${client.ws.ping}ms`, ephemeral: true});
+        interaction.reply({content: `Pong! ${client.ws.ping}ms`, flags: MessageFlags.Ephemeral});
     }
 };

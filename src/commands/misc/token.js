@@ -1,4 +1,6 @@
-const { ApplicationCommandOptionType } = require('discord.js');
+const { google } = require('googleapis');
+const { spreadsheetId, spreadsheetRanges } = require('../../../config.json');
+const { ApplicationCommandOptionType, MessageFlags } = require('discord.js');
 
 module.exports = {
     name: 'token',
@@ -8,15 +10,39 @@ module.exports = {
     barcOnly: true,
     leadershipOnly: true,
     sheets: true,
-    // options: Object[],
+    options: [
+        {
+            name: "amount",
+            description: "Amount of tokens to add",
+            required: true,
+            type: ApplicationCommandOptionType.Number,
+        },
+        {
+            name: "reason",
+            description: "Reason for adding event points",
+            required: true,
+            type: ApplicationCommandOptionType.String,
+        },
+        {
+            name: "user",
+            description: "Reason for adding event points",
+            required: true,
+            type: ApplicationCommandOptionType.User,
+        },
+    ],
 
     callback: async (client, googleSheets, interaction) => {
-        const sheet = await googleSheets.spreadsheets.values.batchGet({
-            auth,
-            spreatsheetId,
-            ranges: spreadsheetRanges,
-        })
-
-        interaction.reply({content: `Pong! ${client.ws.ping}ms`, ephemeral: true});
+        try {
+            const sheet = await googleSheets.spreadsheets.values.batchGet({
+                auth: googleSheets.auth,
+                spreadsheetId,
+                ranges: spreadsheetRanges,
+            })
+    
+            interaction.reply({content: `Pong! ${client.ws.ping}ms`, flags: MessageFlags.Ephemeral});
+        } catch (error) {
+            console.warn("!!! err", error)
+        }
+        
     }
 };
