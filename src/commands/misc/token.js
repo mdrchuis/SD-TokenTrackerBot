@@ -167,7 +167,11 @@ module.exports = {
                 
             }
     
-            interaction.reply({content: `Added ${amount} tokens to ${users}`, flags: MessageFlags.Ephemeral});
+            if (method === "1") {
+                interaction.reply({content: `Added ${AMOUNT} tokens to ${users}`, flags: MessageFlags.Ephemeral});
+            } else if (method === "2") {
+                interaction.reply({content: `Removed ${AMOUNT} tokens to ${users}`, flags: MessageFlags.Ephemeral});
+            }
         } catch (error) {
             console.warn("!!! err", error);
         }
