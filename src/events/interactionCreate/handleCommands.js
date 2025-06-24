@@ -63,6 +63,8 @@ module.exports = async (client, googleSheets, interaction) => {
             }
         }
 
+        console.log(`${interaction.user.username} used command: ${interaction.commandName}`)
+
         if (commandObject.sheets) {
             await commandObject.callback(client, googleSheets, interaction);
         } else {
