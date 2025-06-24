@@ -64,11 +64,11 @@ module.exports = async (client, googleSheets, interaction) => {
         }
 
         if (commandObject.sheets) {
-            await commandObject.callback(client, googleSheets, interaction)
+            await commandObject.callback(client, googleSheets, interaction);
         } else {
-            await commandObject.callback(client, interaction)
+            await commandObject.callback(client, interaction);
         }
     } catch (error) {
-        console.error(`handleCommands ! Catched error "${error}"`)
+        console.error(`handleCommands ! Catched error "${error}"`);
     }
 };

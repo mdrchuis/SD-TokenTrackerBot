@@ -29,39 +29,35 @@ module.exports = {
 
             const [c, d, e, j, k, l] = sheet.data.valueRanges.map(col => col.values.map(v => v[0] || ''));
             
-            const maxLength = Math.max(c.length, d.length, e.length, j.length, k.length, l.length)
+            const maxLength = Math.max(c.length, d.length, e.length, j.length, k.length, l.length);
 
-            const userName = interaction.options.getString('user') || interaction.member.nick.split("[")[0]
-
-            console.log(userName)
+            const userName = interaction.options.getString('user') || interaction.member.nick.split("[")[0];
 
             for (let i = 0; i < maxLength; i++) {
                 if (c[i] !== undefined && c[i] !== '' &&
                     d[i] !== undefined && d[i] !== '' &&
                     e[i] !== undefined && e[i] !== '') {
 
-                    const sheetName = c[i].split("(")[0].replace(/\s+/g, "")
-
-                    console.log(sheetName)
+                    const sheetName = c[i].split("(")[0].replace(/\s+/g, "");
 
                     if (sheetName === userName) {
-                        interaction.reply(`Weekly Tokens: ${d[i]}\nTotal Tokens: ${e[i]}`)
+                        interaction.reply(`Weekly Tokens: ${d[i]}\nTotal Tokens: ${e[i]}`);
                     }
                 }
                 if (j[i] !== undefined && j[i] !== '' &&
                     k[i] !== undefined && k[i] !== '' &&
                     l[i] !== undefined && l[i] !== '') {
                         
-                    const sheetName = j[i].split("(")[0].replace(/\s+/g, "")
+                    const sheetName = j[i].split("(")[0].replace(/\s+/g, "");
 
                     if (sheetName === userName) {
-                            interaction.reply(`Weekly Tokens: ${k[i]}\nTotal Tokens: ${l[i]}`)
+                            interaction.reply(`Weekly Tokens: ${k[i]}\nTotal Tokens: ${l[i]}`);
                     }
                 }
                 
             }
         } catch (error) {
-            console.warn("!!! err", error)
+            console.warn("!!! err", error);
         }
         
     }

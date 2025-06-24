@@ -57,11 +57,11 @@ module.exports = {
 
             const [c, d, e, j, k, l] = sheet.data.valueRanges.map(col => col.values.map(v => v[0] || ''));
             
-            const maxLength = Math.max(c.length, d.length, e.length, j.length, k.length, l.length)
+            const maxLength = Math.max(c.length, d.length, e.length, j.length, k.length, l.length);
 
-            const method = interaction.options.getString("method")
-            const AMOUNT = interaction.options.getNumber("amount")
-            const users = interaction.options.getString("users")
+            const method = interaction.options.getString("method");
+            const AMOUNT = interaction.options.getNumber("amount");
+            const users = interaction.options.getString("users");
             const userArray = users.split(/\s+/);
 
             for (let i = 0; i < maxLength; i++) {
@@ -169,7 +169,7 @@ module.exports = {
     
             interaction.reply({content: `Added ${amount} tokens to ${users}`, flags: MessageFlags.Ephemeral});
         } catch (error) {
-            console.warn("!!! err", error)
+            console.warn("!!! err", error);
         }
         
     }
