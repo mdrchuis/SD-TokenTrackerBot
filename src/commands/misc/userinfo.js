@@ -31,7 +31,13 @@ module.exports = {
             
             const maxLength = Math.max(c.length, d.length, e.length, j.length, k.length, l.length);
 
-            const userName = interaction.options.getString('user') || interaction.member.nick.split("[")[0];
+            var userName = interaction.options.getString('user');
+            
+            if (userName == null) {
+                userName = interaction.member.nick.split("[")[0].replace(/\s+/g, "");   
+            }
+
+            console.log(userName)
 
             for (let i = 0; i < maxLength; i++) {
                 if (c[i] !== undefined && c[i] !== '' &&
