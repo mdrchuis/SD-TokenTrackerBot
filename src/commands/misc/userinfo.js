@@ -4,7 +4,7 @@ const { ApplicationCommandOptionType, MessageFlags } = require('discord.js');
 
 module.exports = {
     name: 'userinfo',
-    description: 'Temp',
+    description: 'View the user\'s token',
     // devOnly: true,
     // testOnly: true,
     barcOnly: true,
