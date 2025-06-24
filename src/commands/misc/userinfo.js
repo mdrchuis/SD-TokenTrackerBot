@@ -37,8 +37,6 @@ module.exports = {
                 userName = interaction.member.nick.split("[")[0].replace(/\s+/g, "");   
             }
 
-            console.log(userName)
-
             for (let i = 0; i < maxLength; i++) {
                 if (c[i] !== undefined && c[i] !== '' &&
                     d[i] !== undefined && d[i] !== '' &&
