@@ -1,6 +1,6 @@
 const { google } = require('googleapis');
 const { spreadsheetId, spreadsheetRanges } = require('../../../config.json');
-const { ApplicationCommandOptionType, MessageFlags } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder, MessageFlags } = require('discord.js');
 
 module.exports = {
     name: 'edit',
@@ -140,13 +140,24 @@ module.exports = {
                     }
                 }
             }
+
+            const action = method === "1" ? "Added" : method === "2" ? "Removed" : null;
     
-            if (method === "1") {
-                console.log(`> Added Users "${users}" for reason "${reason}"`)
-                interaction.reply({content: `Added "${users}" to the token sheet`, flags: MessageFlags.Ephemeral});
-            } else if (method === "2") {
-                console.log(`> Removed Users "${users}" for reason "${reason}"`)
-                interaction.reply({content: `Removed "${users}" to the token sheet`, flags: MessageFlags.Ephemeral});
+            if (action) {
+                console.log(`> ${action} Users "${users}" for reason "${reason}"`);
+            
+                const embed = new EmbedBuilder()
+                    .setTitle(`✅ ${action} to Token Sheet`)
+                    .setColor(method === "1" ? 0x00ff00 : 0xff0000) // Green for add, red for remove
+                    .addFields(
+                        { name: 'Users', value: Array.isArray(users) ? users.join(', ') : users, inline: false },
+                        { name: 'Reason', value: reason || 'No reason provided.', inline: false }
+                    )
+                    .setTimestamp();
+            
+                await interaction.reply({ embeds: [embed],  flags: MessageFlags.Ephemeral  });
+            } else {
+                await interaction.reply({ content: '❌ Invalid method provided.',  flags: MessageFlags.Ephemeral  });
             }
         } catch (error) {
             console.warn(`!!! catched error "${error}"`);
