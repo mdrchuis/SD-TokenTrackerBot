@@ -64,6 +64,9 @@ module.exports = {
             const users = interaction.options.getString("users");
             const userArray = users.split(/\s+/);
 
+            const reason = interaction.options.getString("reason");
+            console.log(`> Added Users "${users}" for reason "${reason}"`)
+
             for (let i = 0; i < maxLength; i++) {
                 if (c[i] !== undefined && c[i] !== '' &&
                     d[i] !== undefined && d[i] !== '' &&
