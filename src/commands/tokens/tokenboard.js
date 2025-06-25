@@ -1,6 +1,6 @@
 const { google } = require('googleapis');
 const { spreadsheetId, spreadsheetRanges } = require('../../../config.json');
-const { ApplicationCommandOptionType, EmbedBuilder, MessageFlags } = require('discord.js');
+const { EmbedBuilder, MessageFlags } = require('discord.js');
 
 module.exports = {
     name: 'tokenboard',
