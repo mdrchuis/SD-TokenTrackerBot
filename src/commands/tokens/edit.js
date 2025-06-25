@@ -43,6 +43,8 @@ module.exports = {
 
     callback: async (client, googleSheets, interaction) => {
         try {
+            await interaction.deferReply({  flags: MessageFlags.Ephemeral  });
+
             const sheet = await googleSheets.spreadsheets.values.batchGet({
                 auth: googleSheets.auth,
                 spreadsheetId,
@@ -155,13 +157,13 @@ module.exports = {
                     )
                     .setTimestamp();
             
-                await interaction.reply({ embeds: [embed],  flags: MessageFlags.Ephemeral  });
+                interaction.editReply({ embeds: [embed],  flags: MessageFlags.Ephemeral  });
             } else {
-                await interaction.reply({ content: '❌ Invalid method provided.',  flags: MessageFlags.Ephemeral  });
+                interaction.editReply({ content: '❌ Invalid method provided.',  flags: MessageFlags.Ephemeral  });
             }
         } catch (error) {
             console.warn(`!!! catched error "${error}"`);
-            interaction.reply({content: "Error..."});
+            interaction.editReply({content: "Error..."});
         }
         
     }
