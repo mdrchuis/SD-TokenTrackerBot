@@ -106,7 +106,6 @@ module.exports = {
                         }
 
                         if (isPendingEp) {
-                            console.log(interaction)
                             interaction.user.send(`${sheetName} has ${isPendingEp} EP pending from tokens. Give them their EP now!!!!`)
                         }
 
