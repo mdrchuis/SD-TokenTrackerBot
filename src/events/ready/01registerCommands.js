@@ -5,17 +5,17 @@ const getAllCommands = require(path.join(__dirname, '..', '..', 'utils', 'getAll
 
 module.exports = async () => {
     try {
-        const commands = getAllCommands()
+        const commands = getAllCommands();
 
-        const rest = new REST({ version: '10' }).setToken(process.env.TOKEN)
+        const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
         await rest.put(
             Routes.applicationCommands(process.env.CLIENT_ID),
             { body: commands },
         );
 
-        console.log(`registerCommands.js > Loaded Commands`)
+        console.log(`registerCommands.js > Loaded Commands`);
     } catch (error) {
-        console.error(`registerCommands.js ! Catched Error: ${error}`)
+        console.error(`registerCommands.js ! Catched Error: "${error}"`);
     }
 };
