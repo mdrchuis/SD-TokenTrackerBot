@@ -14,8 +14,8 @@ module.exports = async () => {
             { body: commands },
         );
 
-        console.log(`> Loaded commands`)
+        console.log(`registerCommands.js > Loaded Commands`)
     } catch (error) {
-        console.error(`! Catched error: ${error}`)
+        console.error(`registerCommands.js ! Catched Error: ${error}`)
     }
 };

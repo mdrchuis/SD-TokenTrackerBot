@@ -63,7 +63,7 @@ module.exports = async (client, googleSheets, interaction) => {
             }
         }
 
-        console.log(`${interaction.user.username} used command: ${interaction.commandName}`)
+        console.log(`handleCommands.js > Used Command "${interaction.commandName}", "${interaction.user.username}"`)
 
         if (commandObject.sheets) {
             await commandObject.callback(client, googleSheets, interaction);
@@ -71,6 +71,6 @@ module.exports = async (client, googleSheets, interaction) => {
             await commandObject.callback(client, interaction);
         }
     } catch (error) {
-        console.error(`handleCommands ! Catched error "${error}"`);
+        console.error(`handleCommands.js ! Catched Error "${error}"`);
     }
 };

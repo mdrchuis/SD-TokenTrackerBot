@@ -61,7 +61,7 @@ module.exports = {
                 
             }
         } catch (error) {
-            console.warn("!!! err", error);
+            console.warn(`userinfo.js ! Catched Error "${error}"`);
         }
         
     }

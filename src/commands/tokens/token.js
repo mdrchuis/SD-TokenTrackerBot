@@ -176,7 +176,7 @@ module.exports = {
                 interaction.reply({content: `Removed ${AMOUNT} tokens to ${users}`, flags: MessageFlags.Ephemeral});
             }
         } catch (error) {
-            console.warn("!!! err", error);
+            console.warn(`token.js ! Catched Error "${error}"`);
         }
         
     }

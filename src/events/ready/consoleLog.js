@@ -1,3 +1,3 @@
 module.exports = (client) => {
-    console.log(`> Started bot "${client.user.username}"`)
+    console.log(`consoleLog.js > Started Bot "${client.user.username}"`)
 };
