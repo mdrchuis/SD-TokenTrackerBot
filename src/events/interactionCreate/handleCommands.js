@@ -12,7 +12,7 @@ module.exports = async (client, googleSheets, interaction) => {
 
         if (!commandObject) return;
         if (commandObject.devOnly) {
-            if (!devs.includes(interaction.member.user.id)) {
+            if (!devs.includes(interaction.user.id)) {
                 interaction.reply({
                     content: "! This command can only be used by the developer, for safety reasons",
                     flags: MessageFlags.Ephemeral,
