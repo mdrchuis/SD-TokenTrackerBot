@@ -25,7 +25,7 @@ module.exports = {
         },
         {
             name: "method",
-            description: "How to manage the user(s) tokens (type out the full username(s), don't ping)",
+            description: "How to manage the user(s) tokens",
             required: true,
             type: ApplicationCommandOptionType.String,
             choices: [
@@ -41,7 +41,7 @@ module.exports = {
         },
         {
             name: "users",
-            description: "The user(s) to add tokens to",
+            description: "The user(s) to add tokens to (type out the full username(s), don't ping)",
             required: true,
             type: ApplicationCommandOptionType.String,
         },
