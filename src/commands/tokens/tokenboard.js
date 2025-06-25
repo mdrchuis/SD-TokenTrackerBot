@@ -1,5 +1,5 @@
 const { google } = require('googleapis');
-const { testSpreadsheetId, spreadsheetRanges } = require('../../../config.json');
+const { spreadsheetId, spreadsheetRanges } = require('../../../config.json');
 const { ApplicationCommandOptionType, EmbedBuilder, MessageFlags } = require('discord.js');
 
 module.exports = {
@@ -12,8 +12,6 @@ module.exports = {
     sheets: true,
 
     callback: async (client, googleSheets, interaction) => {
-        const spreadsheetId = testSpreadsheetId
-
         try {
             const sheet = await googleSheets.spreadsheets.values.batchGet({
                 auth: googleSheets.auth,
