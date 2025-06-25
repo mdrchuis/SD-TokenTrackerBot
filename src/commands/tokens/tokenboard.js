@@ -130,7 +130,7 @@ module.exports = {
                 .setFooter({ text: 'Fear the demons!' })
                 .setTimestamp();
 
-            await interaction.reply({ embeds: [podiumEmbed], ephemeral: false });
+            await interaction.reply({ embeds: [podiumEmbed], flags: MessageFlags.Ephemeral });
         } catch (error) {
             console.warn(`userinfo.js ! Catched Error "${error}"`);
         }
