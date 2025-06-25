@@ -155,9 +155,11 @@ module.exports = {
                         { name: 'Users', value: Array.isArray(users) ? users.join(', ') : users, inline: false },
                         { name: 'Reason', value: reason || 'No reason provided.', inline: false }
                     )
+                    .setFooter({ text: 'Fear the demons!' })
                     .setTimestamp();
             
                 interaction.editReply({ embeds: [embed],  flags: MessageFlags.Ephemeral  });
+                
             } else {
                 interaction.editReply({ content: '❌ Invalid method provided.',  flags: MessageFlags.Ephemeral  });
             }
