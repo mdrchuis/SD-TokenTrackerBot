@@ -13,6 +13,8 @@ module.exports = {
 
     callback: async (client, googleSheets, interaction) => {
         try {
+            interaction.deferReply({MessageFlags: MessageFlags.Ephemeral})
+            
             const sheet = await googleSheets.spreadsheets.values.batchGet({
                 auth: googleSheets.auth,
                 spreadsheetId,
@@ -130,7 +132,7 @@ module.exports = {
                 .setFooter({ text: 'Fear the demons!' })
                 .setTimestamp();
 
-            await interaction.reply({ embeds: [podiumEmbed], flags: MessageFlags.Ephemeral });
+            await interaction.editReply({ embeds: [podiumEmbed], flags: MessageFlags.Ephemeral });
         } catch (error) {
             console.warn(`userinfo.js ! Catched Error "${error}"`);
         }

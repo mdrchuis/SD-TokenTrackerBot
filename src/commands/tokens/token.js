@@ -49,6 +49,8 @@ module.exports = {
 
     callback: async (client, googleSheets, interaction) => {
         try {
+            interaction.deferReply({MessageFlags: MessageFlags.Ephemeral})
+
             const sheet = await googleSheets.spreadsheets.values.batchGet({
                 auth: googleSheets.auth,
                 spreadsheetId,
@@ -170,9 +172,9 @@ module.exports = {
             }
     
             if (method === "1") {
-                interaction.reply({content: `Added "${AMOUNT}" tokens to "${users}"`, flags: MessageFlags.Ephemeral});
+                interaction.editReply({content: `Added "${AMOUNT}" tokens to "${users}"`, flags: MessageFlags.Ephemeral});
             } else if (method === "2") {
-                interaction.reply({content: `Removed "${AMOUNT}" tokens to "${users}"`, flags: MessageFlags.Ephemeral});
+                interaction.editReply({content: `Removed "${AMOUNT}" tokens to "${users}"`, flags: MessageFlags.Ephemeral});
             }
         } catch (error) {
             console.warn(`token.js ! Catched Error "${error}"`);
