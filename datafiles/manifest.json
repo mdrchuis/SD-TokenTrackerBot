@@ -1,5 +1,8 @@
 {
   "gameId": "test_game",
-  "version": "1.0.0",
-  "source": "https://github.com/mdrchuis/LovelaceEngine-2026/tree/master/datafiles"
+  "version": "0.8.0",
+  "owner": "mdrchuis",
+  "repo": "SD-TokenTrackerBot",
+  "path": "datafiles/manifest.json",
+  "installation": "google.com"
 }
